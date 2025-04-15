@@ -12,7 +12,7 @@ app.get("/",(req,res)=>{
 })
 app.get("/book",(req,res)=>{
     console.log("Book executed")
-    res.send("<h1>Welcome to BOok</h1>")
+    res.send("<h1>Welcome to Book</h1>")
 })
 app.get("/manojfun/:id",(req,res,next)=>{
     console.log("Middleware executed")
@@ -23,10 +23,12 @@ app.get("/manojfun/:id",(req,res,next)=>{
     }
     else{
         console.log("authentication failed")
-    }
-    res.end()   
-},()=>{
+        res.end()
+    } 
+},(req,res)=>{
     console.log("response process + business logic")
+    // res.sendFile(__dirname+"/index.html")
+    res.sendFile(__dirname+"/views/manoj.html")
 })
 
 app.listen(port)
